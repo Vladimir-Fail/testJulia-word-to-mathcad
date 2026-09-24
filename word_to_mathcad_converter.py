@@ -275,7 +275,8 @@ class MathcadWriter:
             '    </editor>',
             '    <fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false"/>',
             '    <miscellaneous>',
-            '      <item id="0" name="creator" value="Python Word to Mathcad Converter"/>',
+            '      <handbook handbook-region="false" presentation-mode="false" is-modified="false"/>',
+            '      <image-scale-mode-default>scale-to-fit</image-scale-mode-default>',
             '    </miscellaneous>',
             '  </settings>',
             '  <regions>'
