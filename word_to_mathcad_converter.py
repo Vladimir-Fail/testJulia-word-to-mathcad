@@ -273,10 +273,9 @@ class MathcadWriter:
             '      <ruler is-visible="false" ruler-unit="in"/>',
             '      <grid granularity-x="6" granularity-y="6"/>',
             '    </editor>',
-            '    <fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false"/>',
+            '    <fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false" screen-dpi="96"/>',
             '    <miscellaneous>',
-            '      <handbook handbook-region="false" presentation-mode="false" is-modified="false"/>',
-            '      <image-scale-mode-default>scale-to-fit</image-scale-mode-default>',
+            f'      <handbook handbook-region-tag-ub="{len(math_regions)}" can-delete-original-handbook-regions="true" can-delete-user-regions="true" can-print="true" can-copy="true" can-save="true" file-permission-mask="4294967295"/>',
             '    </miscellaneous>',
             '  </settings>',
             '  <regions>'
