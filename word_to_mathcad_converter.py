@@ -273,9 +273,10 @@ class MathcadWriter:
             '      <ruler is-visible="false" ruler-unit="in"/>',
             '      <grid granularity-x="6" granularity-y="6"/>',
             '    </editor>',
-            '    <fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false" screen-dpi="96"/>',
+            '    <fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false"/>',
             '    <miscellaneous>',
-            f'      <handbook handbook-region-tag-ub="{len(math_regions)}" can-delete-original-handbook-regions="true" can-delete-user-regions="true" can-print="true" can-copy="true" can-save="true" file-permission-mask="4294967295"/>',
+            '      <handbook handbook-region="false" presentation-mode="false" is-modified="false"/>',
+            '      <image-scale-mode-default>scale-to-fit</image-scale-mode-default>',
             '    </miscellaneous>',
             '  </settings>',
             '  <regions>'
@@ -285,13 +286,13 @@ class MathcadWriter:
         current_top = 15
         
         for i, region in enumerate(math_regions):
-            xml_content.append(f'    <region region-id="{i+1}" left="15" top="{current_top}" width="30" height="15" align-x="15" align-y="{current_top+10}" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">')
+            xml_content.append(f'    <region region-id="{i+1}" left="15" top="{current_top}">')
             
             if "error_text" in region:
                 # Если формулу не удалось разобрать логически, выводим её как текст (комментарий), чтобы не терять
                 escaped_text = html.escape(region["error_text"])
-                xml_content.append('      <text>')
-                xml_content.append(f'        <p>Нераспознанная формула: {escaped_text}</p>')
+                xml_content.append('      <text use-page-width="false" push-down="false" lock-width="true">')
+                xml_content.append(f'        <p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Нераспознанная формула: {escaped_text}</p>')
                 xml_content.append('      </text>')
             else:
                 # Успешно разобранная формула
